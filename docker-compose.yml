@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  chn-server:
+    build:
+      context: ./chn-server
+      dockerfile: Dockerfile 
+    networks:
+      - net-10.8.0.0
+
+  cif-server:
+    build:
+      context: ./cif-server
+      dockerfile: Dockerfile
+    networks:
+      - net-10.8.0.0
+
+  threat-intelligence:
+    build:
+      context: ./threat-intelligence
+      dockerfile: Dockerfile
+    networks:
+      - net-10.8.0.0
+
+  blackhole-routing:
+    build:
+      context: ./blackhole-routing
+      dockerfile: Dockerfile
+    networks:
+      - net-10.8.0.0
+
+  chn-honeypot:
+    build:
+      context: ./chn-honeypot
+      dockerfile: Dockerfile
+    networks:
+      - net-10.8.0.0
+
+networks:
+  net-10.8.0.0:
+    name: net-10.8.0.0
+    ipam:
+      config:
+        - subnet: 10.8.0.0/24
