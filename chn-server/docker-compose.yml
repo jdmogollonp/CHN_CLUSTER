@@ -49,3 +49,12 @@ services:
     links:
       - hpfeeds3:hpfeeds3
       - mongodb:mongodb
+
+  hpfeeds-bhr:
+    image: stingar/hpfeeds-bhr:1.9.1
+    env_file:
+      - hpfeeds-bhr.env
+    links:
+      - redis:redis
+      - hpfeeds3:hpfeeds3
+      - mongodb:mongodb
