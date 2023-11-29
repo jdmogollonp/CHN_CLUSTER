@@ -10,7 +10,7 @@ services:
 
   cif-server:
     build:
-      context: ./cif-server
+      context: ./cif-server-v3
       dockerfile: Dockerfile
     networks:
       - net-10.8.0.0

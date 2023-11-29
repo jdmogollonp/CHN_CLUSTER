@@ -1,2 +1,8 @@
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
 
-thread-intelligence/Dockerfile
+# Set the working directory in the container
+WORKDIR /usr/src/app
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
