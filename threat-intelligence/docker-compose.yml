@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+
+  cif-server:
+    build:
+      context: ./cif-server-v3
+      dockerfile: Dockerfile
+    networks:
+      - net-10.8.0.0
+  redis-server:
+    build:
+      context: ./redis-server
+      dockerfile: Dockerfile
+      
+networks:
+  net-10.8.0.0:
+    name: net-10.8.0.0
+    ipam:
+      config:
+        - subnet: 10.8.0.0/24
