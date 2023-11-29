@@ -1,6 +1,6 @@
 # Use the base CIF server image
-FROM renisac/cifv3
-
+#FROM renisac/cifv3
+FROM renisac/cifv3-cli
 # Set the working directory
 WORKDIR /home/cif
 
