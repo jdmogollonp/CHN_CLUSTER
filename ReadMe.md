@@ -1,5 +1,38 @@
 
-### Starting the Entire Cluster
+# Stingar Capabilities Deployment Repository
+
+This repository hosts all the necessary artifacts for deploying the basic capabilities of Stingar: honeypots, threat intelligence, and blocking. Each of these capabilities is organized into separate subfolders, each containing its own `docker-compose` file.
+
+## Deployment Instructions
+
+To deploy any of the Stingar components, follow these steps:
+
+1. **Navigate to the Component Folder**: Choose the capability you want to deploy (honeypots, threat intelligence, or blocking) and navigate to the corresponding subfolder.
+
+2. **Use Docker-Compose**: Within each subfolder, you'll find a `docker-compose` file. Use this file to deploy the component.
+
+## Component Details
+
+### Honeypots
+- A sample honeypot configuration is provided. However, the final configuration should be completed through the UI in the CHN server.
+
+### Threat Intelligence
+- **Note**: The configuration for threat intelligence is currently incomplete due to integration conflicts. This component may not function as expected until these issues are resolved.
+
+### Blocking
+- Instructions for deploying the blocking capability are provided in the corresponding subfolder.
+
+## Additional Information
+
+For more detailed instructions on configuration and deployment, refer to the README files located within each component's subfolder.
+
+---
+
+This revised README provides a clear introduction to what the repository contains, followed by structured sections for deployment instructions and specific details about each component. This structure should make it easier for users to understand and follow the deployment process.
+
+
+
+### Starting the each Cluster
 
 1. **Navigate to Your Project Directory**: Open a terminal and navigate to the directory where your `docker-compose.yml` file is located.
 
