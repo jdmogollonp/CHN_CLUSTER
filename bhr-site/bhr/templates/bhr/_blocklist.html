@@ -1,0 +1,59 @@
+{% load resolve %}
+{% load cache %}
+
+<h3> {{ title }} </h3>
+{% if blocks %}
+<table class="table table-striped table-bordered">
+
+<thead>
+<tr>
+{% if not limited %}
+    <th>Unblock</th>
+{% endif %}
+    <th>Cidr</th>
+{% if resolve %}
+    <th>DNS</th>
+{% endif %}
+    <th>Source</th>
+{% if not limited %}
+    <th>Who</th>
+    <th>Why</th>
+{% endif %}
+    <th>Added</th>
+    <th>Unblock At</th>
+    <th>Duration</th>
+</tr>
+</thead>
+
+<tbody>
+{% for b in blocks %}
+    <tr>
+{% if not limited %}
+        <td>
+            <input type="checkbox" name="block_id" value="{{b.id}}">
+        </td>
+{% endif %}
+        <td>{{ b.cidr }} </td>
+        {% if resolve %}
+            {% cache 600 resolution b.cidr %}
+            <td> {{ b.cidr | resolve }} </td>
+            {% endcache %}
+        {% endif %}
+        <td>{{ b.source }} </td>
+{% if not limited %}
+        <td>{{ b.who__username }} </td>
+        <td>{{ b.why }} </td>
+{% endif %}
+        <td>{{ b.added }} </td>
+        <td>{{ b.unblock_at }} </td>
+        <td>{{ b.added|timesince:b.unblock_at }} </td>
+    </tr>
+{% endfor %}
+</tbody>
+
+</table>
+{% else %}
+    <div class="alert alert-warning">
+    No blocks.
+    </div>
+{% endif %}
