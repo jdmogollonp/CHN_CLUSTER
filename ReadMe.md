@@ -26,11 +26,19 @@ To deploy any of the Stingar components, follow these steps:
 
 For more detailed instructions on configuration and deployment, refer to the README files located within each component's subfolder.
 
----
+## In AWS
 
-This revised README provides a clear introduction to what the repository contains, followed by structured sections for deployment instructions and specific details about each component. This structure should make it easier for users to understand and follow the deployment process.
+ The BHR server requires to update the  ALLOWED_HOST parameter in  .\bhr-site\bhr_site\settings.py . Then create the super user:
 
-
+```
+$ docker-compose up -d db
+$ sleep 5
+$ docker-compose run --rm web python manage.py migrate
+$ docker-compose run --rm web python manage.py createsuperuser
+$ docker-compose run --rm web python manage.py creategroups
+$ docker-compose up
+$ docker-compose run --rm web python manage.py test -v 2
+```
 
 ### Starting the each Cluster
 
